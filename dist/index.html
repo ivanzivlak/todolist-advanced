@@ -9,24 +9,41 @@
 </head>
 <body>
     <div class="main-container">
-        <div class="modal">
+        <div class="modal hidden">
             <div class="modal-nav">
                 <h1 class="modal-title">Create a new...</h1>
             </div>
             <div class="modal-sidebar">
                 <ul>
-                    <li>To-do</li>
-                    <li>Project</li>
-                    <li>Notes</li>
+                    <li id="todo-btn" data-name="todo">To-do</li>
+                    <li id="project-btn" data-name="project">Project</li>
+                    <li id="note-btn" data-name="note">Notes</li>
                 </ul>
             </div>
             <div class="modal-content-todo">
-                <input type="text" name="todo-title" id="todo-title" placeholder="Title....">
-                <input type="text" name="todo-desc" id="todo-desc" placeholder="Description...">
-                <div class="todo-options"></div>
+                <input type="text" name="todo-title" class="todo-title" placeholder="Title....">
+                <input type="text" name="todo-desc" class="todo-desc" placeholder="Description...">
+                <div class="todo-options">
+                    <div class="options-left">
+                        <h3>Priority:</h3>
+                        <button class="high">High</button>
+                        <button class="medium">Medium</button>
+                        <button class="low">Low</button>
+                    </div>
+                    <div class="options-right">
+                        <button>Add To Do</button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-content-project hidden"></div>
-            <div class="modal-content-note hidden"></div>
+            <div class="modal-content-project hidden">
+                <textarea id="project-title" placeholder="Add Title..."></textarea>
+                <button class="add-button">Add Project</button>
+            </div>
+            <div class="modal-content-note hidden">
+                <input type="text" class="todo-title" placeholder="Title....">
+                <input type="text" class="todo-desc" placeholder="Description...">
+                <button class="add-button">Add Note</button>
+            </div>
         </div>
         <header class="nav">
             <h1>Check yo self!</h1>
@@ -36,19 +53,18 @@
                 <li class="side-item">Home</li>
                 <li class="side-item">Projects
                     <ul>
-                        <li class="side-item">Math</li>
-                        <li class="side-item">Code</li>
+                        
                     </ul>
                     
                 </li>
                 <li class="side-item">Notes</li>
             </ul>
-            <div><button>+</button></div>
+            <div><button class="add-thing-btn">+</button></div>
         </div>
         <div class="content">
-            <div class="list-container">
+            <div class="list-container hidden">
                 <div class="list-item">
-                    <div class="left-content">
+                    <div class="left-content ">
                         <button type="checkbox"></button>
                         <div>Go to bed man</div>
                     </div>
@@ -59,6 +75,12 @@
                     </div>
                 </div>
             </div>
+            <div class="projects-container">
+                <div class="list-item list-item-project">
+                    <div>Math</div>
+                </div>
+            </div>
+            <div class="note-container hidden"></div>
         </div>
     </div>
 

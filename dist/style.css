@@ -24,7 +24,7 @@
 /* MODAL */
 .modal{
     position: absolute;
-    z-index: 1;
+    z-index: -1;
     height: 80%;
     width: 80%;
     background-color: #292c6e;
@@ -74,26 +74,89 @@
     flex-grow: 1;
 }
 
-#todo-title{
+.todo-title{
     height: 30px;
     font-size: 20px;
+    border: none;
+    border-color: transparent;
+    resize: none;
+    outline: none;
 }
-#todo-desc{
+.todo-desc{
     flex-grow: 7;
     border-style: none;
     font-size: 15px;
+    border: none;
+    border-color: transparent;
+    resize: none;
+    outline: none;
 }
 .todo-options{
     flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.options-left > button{
+    height: 25px;
+    width: 70px;
+    border-radius: 25px;
+}
+
+.options-left > button:hover{
+    color: white;
+    background-color: #858AE3;
+    transform: scale(1.12);
+}
+
+.options-right{
+    display: flex;
+    align-items: center;
+}
+
+.options-right > button {
+    height: 35px;
+    width: 80px;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+.options-right > button:hover{
+    color: white;
+    background-color: rgb(129, 178, 57);
 }
 
 .modal-content-project{
     grid-area: modal-content;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#project-title{
+    height: 300px;
+    font-size: 25px;
+    border: none;
+    border-color: transparent;
+    resize: none;
+    outline: none;
+    margin: 5px;
+}
+
+.add-button{
+    height: 35px;
+    width: 80px;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 .modal-content-note{
     grid-area: modal-content;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 
@@ -103,15 +166,16 @@
     text-align: center;
     padding-top: 20px;
     background-color: #858AE3;
-    filter: blur(3px);
 }
+
+
+/* SIDEBAR */
 
 .sidebar{
     grid-area: sidebar;
     background-color: #FFF8F0;
     font-size: 30px;
     text-align: center;
-    filter: blur(3px);
 }
 
 .sidebar > ul > li {
@@ -126,16 +190,15 @@
     list-style: none;
 }
 
+/* CONTENT */
 .content{
     grid-area: content;
     background-color: #ffffff;
-    display: flex;
-    
     margin: 20px;
-    filter: blur(3px);
 }
 
 .list-container{
+    grid-area: content;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -189,4 +252,27 @@
     color: white;
     background-color: #858AE3;
     transform: scale(1.12);
+}
+
+/* Projects container */
+.projects-container{
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item-project{
+    font-size: 20px;
+}
+
+.add-thing-btn{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    font-size: 30px;
+    z-index: 1;
+}
+
+.blurred{
+    filter: blur(3px);
 }
