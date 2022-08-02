@@ -4,6 +4,8 @@ const content = document.body.querySelector(".content");
 // const modalTodoBtn = document.body.querySelector("#todo-btn");
 // const modalProjectBtn = document.body.querySelector("#project-btn");
 // const modalNoteBtn = document.body.querySelector("#note-btn");
+const modalTodoTitle = document.body.querySelector(".todo-title");
+const modalTodoDesc = document.body.querySelector(".todo-desc");
 
 //open create new note
 function openCreation() {
@@ -53,4 +55,20 @@ function modalOption(e) {
   }
 }
 
-export { openCreation, modalOption };
+function addItem() {
+  let titleValue = modalTodoTitle.value;
+  let descValue = modalTodoDesc.value;
+  let listItem = document.body.querySelector(".list-item").cloneNode(true);
+
+  document.body.querySelector(".text-content").textContent = titleValue;
+  document.body.querySelector(".list-container").appendChild(listItem);
+  //
+  (function unblur() {
+    sidebar.classList.remove("blurred");
+    content.classList.remove("blurred");
+    nav.classList.remove("blurred");
+    document.body.querySelector(".modal").classList.add("hidden");
+  })();
+}
+
+export { openCreation, modalOption, addItem };

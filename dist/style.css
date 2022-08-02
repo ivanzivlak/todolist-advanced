@@ -23,8 +23,8 @@
 
 /* MODAL */
 .modal{
+    z-index: -2;
     position: absolute;
-    z-index: -1;
     height: 80%;
     width: 80%;
     background-color: #292c6e;
@@ -214,7 +214,7 @@
     align-items:center;
     justify-content: space-between;
     transition: all .3s;
-    
+    z-index: 1;
 }
 
 .list-item:hover{
