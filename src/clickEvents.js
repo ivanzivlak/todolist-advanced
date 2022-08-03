@@ -7,6 +7,8 @@ const content = document.body.querySelector(".content");
 const modalTodoTitle = document.body.querySelector(".todo-title");
 const modalTodoDesc = document.body.querySelector(".todo-desc");
 
+let listItem = document.body.querySelector(".list-item").cloneNode(true);
+
 //open create new note
 function openCreation() {
   const modal = document.body.querySelector(".modal");
@@ -20,6 +22,7 @@ function openCreation() {
 
 function modalOption(e) {
   let clicked = e.target;
+  console.log(clicked.classList);
   if (clicked.dataset.name === "todo") {
     document.body
       .querySelector(".modal-content-todo")
@@ -30,9 +33,7 @@ function modalOption(e) {
       .classList.add("hidden");
 
     document.body.querySelector(".modal-content-note").classList.add("hidden");
-  }
-
-  if (clicked.dataset.name === "project") {
+  } else if (clicked.dataset.name === "project") {
     document.body
       .querySelector(".modal-content-project")
       .classList.remove("hidden");
@@ -40,9 +41,7 @@ function modalOption(e) {
     document.body.querySelector(".modal-content-todo").classList.add("hidden");
 
     document.body.querySelector(".modal-content-note").classList.add("hidden");
-  }
-
-  if (clicked.dataset.name === "note") {
+  } else if (clicked.dataset.name === "note") {
     document.body
       .querySelector(".modal-content-note")
       .classList.remove("hidden");
@@ -53,15 +52,20 @@ function modalOption(e) {
       .querySelector(".modal-content-project")
       .classList.add("hidden");
   }
+
+  if (clicked.classList.contains("delete-btn")) {
+    clicked.parentNode.parentNode.remove();
+    console.log("wrong");
+  }
 }
 
 function addItem() {
   let titleValue = modalTodoTitle.value;
   let descValue = modalTodoDesc.value;
-  let listItem = document.body.querySelector(".list-item").cloneNode(true);
 
-  document.body.querySelector(".text-content").textContent = titleValue;
-  document.body.querySelector(".list-container").appendChild(listItem);
+  let newListItem = listItem.cloneNode(true);
+  newListItem.querySelector(".text-content").textContent = titleValue;
+  document.body.querySelector(".list-container").appendChild(newListItem);
   //
   (function unblur() {
     sidebar.classList.remove("blurred");
@@ -70,5 +74,14 @@ function addItem() {
     document.body.querySelector(".modal").classList.add("hidden");
   })();
 }
+
+// function deleteList(e) {
+//   // this.parentNode.parentNode.remove();
+//   let clicked = e.target;
+//   if (clicked.classList.contains("delete-btn")) {
+//     clicked.parentNode.parentNode.remove();
+//     console.log("wrong");
+//   }
+// }
 
 export { openCreation, modalOption, addItem };
